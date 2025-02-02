@@ -10,9 +10,17 @@ import {
   View,
 } from "react-native";
 import icons from "@/constants/icons";
+import { login } from "@/lib/appwrite";
 
 export default function SignIn() {
-  const handleLogin = () => {};
+  const handleLogin = async () => {
+    const result = await login();
+    if (result) {
+      console.log("Login Success");
+    } else {
+      Alert.alert("Error", "Failed to login");
+    }
+  };
 
   return (
     <SafeAreaView className="bg-white h-full">
