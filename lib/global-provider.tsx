@@ -13,7 +13,7 @@ interface GlobalContextType {
   isLogged: boolean;
   user: User | null;
   loading: boolean;
-  refetch: (newParams: Record<string, string | number>) => void;
+  refetch: (newParams?: Record<string, string | number>) => void;
 }
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
