@@ -28,6 +28,7 @@ export default function Filters() {
       {categories.map((item, index) => {
         return (
           <TouchableOpacity
+            key={index}
             onPress={() => handleCategory(item.category)}
             className={`flex flex-col items-start mr-4 px-4 py-2 rounded-full ${
               selectedCategory === item.category

@@ -1,7 +1,6 @@
 import { Redirect, Slot } from "expo-router";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
 import { useGlobalContext } from "@/lib/global-provider";
 
 export default function AppLayout() {
@@ -19,5 +18,15 @@ export default function AppLayout() {
     return <Redirect href="/sign-in" />;
   }
 
-  return <Slot />;
+  return (
+    <SafeAreaView className="bg-white h-full">
+      <ScrollView
+        contentContainerStyle={{
+          height: "100%",
+        }}
+      >
+        <Slot />
+      </ScrollView>
+    </SafeAreaView>
+  );
 }

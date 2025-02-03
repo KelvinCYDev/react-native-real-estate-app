@@ -2,7 +2,9 @@ import { SplashScreen, Stack } from "expo-router";
 import "./global.css";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
+import { StatusBar } from "expo-status-bar";
 import GlobalProvider from "@/lib/global-provider";
+import "react-native-url-polyfill/auto";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -27,6 +29,7 @@ export default function RootLayout() {
   return (
     <GlobalProvider>
       <Stack screenOptions={{ headerShown: false }} />
+      <StatusBar style="auto" />
     </GlobalProvider>
   );
 }
