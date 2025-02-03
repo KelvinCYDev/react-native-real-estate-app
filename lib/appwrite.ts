@@ -1,9 +1,9 @@
 import { Account, Avatars, Client, OAuthProvider } from "react-native-appwrite";
-import * as Linking from "expo-linking";
 import { openAuthSessionAsync } from "expo-web-browser";
+import { makeRedirectUri } from "expo-auth-session";
 
 export const config = {
-  platform: "com.kelvindev.realestate",
+  platform: "com.kelvincydev.reactnativerealestateapp",
   endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
   projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
   databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID,
@@ -16,8 +16,7 @@ export const config = {
   bucketId: process.env.EXPO_PUBLIC_APPWRITE_BUCKET_ID,
 };
 
-export const client = new Client();
-client
+export const client = new Client()
   .setEndpoint(config.endpoint!)
   .setProject(config.projectId!)
   .setPlatform(config.platform!);
@@ -27,18 +26,21 @@ export const account = new Account(client);
 
 export async function login() {
   try {
-    const redirectUri = Linking.createURL("/");
-    const response = await account.createOAuth2Token(
+    const deepLink = new URL(makeRedirectUri({ preferLocalhost: true }));
+    if (!deepLink.hostname) {
+      deepLink.hostname = "localhost";
+    }
+    const scheme = `${deepLink.protocol}//`; // e.g. 'exp://' or 'playground://'
+
+    // Alert.alert("Log", `${deepLink}`);
+    const loginUrl = await account.createOAuth2Token(
       OAuthProvider.Google,
-      redirectUri
+      `${deepLink}`,
+      `${deepLink}`
     );
 
-    if (!response) throw new Error("Failed to login");
-
-    const browserResult = await openAuthSessionAsync(
-      response.toString(),
-      redirectUri
-    );
+    if (!loginUrl) throw new Error("Create OAuth2 token failed");
+    const browserResult = await openAuthSessionAsync(`${loginUrl}`, scheme);
     if (browserResult.type !== "success")
       throw new Error("Create OAuth2 token failed");
 
