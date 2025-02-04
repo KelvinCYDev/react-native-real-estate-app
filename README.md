@@ -6,6 +6,18 @@ A full-stack Real Estate app from scratch with Google Authentication, dynamic ro
 
 - Expo
 - React Native
+- Typescript
+- NativeWind
+- Appwrite
+- Tailwind CSS
+
+## Features and Pages
+- Oauth with Google
+- Centralized Data fetching from Appwrite via SDK
+- Home page: Display real estate properties with filtering options
+- Explore page: A full-page search screen to find all types of properties
+- Property detail page: To display detailed information on each property
+- Profile page: User settings and profile management
 
 ## Get started
 
@@ -20,3 +32,13 @@ A full-stack Real Estate app from scratch with Google Authentication, dynamic ro
    ```bash
     npx expo start
    ```
+
+3. Development build
+
+   ```bash
+   npx expo run:android
+   ```
+   
+
+## Credit
+[YouTube](https://www.youtube.com/watch?v=CzJQEstIiEI)
