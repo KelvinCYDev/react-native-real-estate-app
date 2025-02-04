@@ -20,13 +20,7 @@ export default function AppLayout() {
 
   return (
     <SafeAreaView className="bg-white h-full">
-      <ScrollView
-        contentContainerStyle={{
-          height: "100%",
-        }}
-      >
-        <Slot />
-      </ScrollView>
+      <Slot />
     </SafeAreaView>
   );
 }

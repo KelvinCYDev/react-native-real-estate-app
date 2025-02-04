@@ -4,16 +4,20 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { Models } from "react-native-appwrite";
 
 interface Props {
+  item: Models.Document;
   onPress?: () => void;
 }
 
-export const FeaturedCard = ({ onPress }: Props) => {
+export const FeaturedCard = ({
+  item: { image, rating, name, address, price },
+  onPress,
+}: Props) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       className="flex flex-col items-start w-60 h-80 relative"
     >
-      <Image source={images.japan} className="size-full rounded-2xl" />
+      <Image source={{ uri: image }} className="size-full rounded-2xl" />
 
       <Image
         source={images.cardGradient}
@@ -23,7 +27,7 @@ export const FeaturedCard = ({ onPress }: Props) => {
       <View className="flex flex-row items-center bg-white/90 px-3 py-1.5 rounded-full absolute top-5 right-5">
         <Image source={icons.star} className="size-3.5" />
         <Text className="text-xs font-rubik-bold text-primary-300 ml-1">
-          4.4
+          {rating}
         </Text>
       </View>
 
@@ -32,15 +36,15 @@ export const FeaturedCard = ({ onPress }: Props) => {
           className="text-xl font-rubik-extrabold text-white"
           numberOfLines={1}
         >
-          Modern Apartment
+          {name}
         </Text>
         <Text className="text-base font-rubik text-white" numberOfLines={1}>
-          22w 15th, New York
+          {address}
         </Text>
 
         <View className="flex flex-row items-center justify-between w-full">
           <Text className="text-xl font-rubik-extrabold text-white">
-            $2,500
+            ${price}
           </Text>
           <Image source={icons.heart} className="size-5" />
         </View>
@@ -49,7 +53,10 @@ export const FeaturedCard = ({ onPress }: Props) => {
   );
 };
 
-export const Card = ({ onPress }: Props) => {
+export const Card = ({
+  item: { image, rating, name, address, price },
+  onPress,
+}: Props) => {
   return (
     <TouchableOpacity
       className="flex-1 w-full mt-4 px-3 py-4 rounded-lg bg-white shadow-lg shadow-black-100/70 relative"
@@ -62,19 +69,15 @@ export const Card = ({ onPress }: Props) => {
         </Text>
       </View>
 
-      <Image source={images.newYork} className="w-full h-40 rounded-lg" />
+      <Image source={{ uri: image }} className="w-full h-40 rounded-lg" />
 
       <View className="flex flex-col mt-2">
-        <Text className="text-base font-rubik-bold text-black-300">
-          Modern Apartment
-        </Text>
-        <Text className="text-xs font-rubik text-black-100">
-          22w 15th, New York
-        </Text>
+        <Text className="text-base font-rubik-bold text-black-300">{name}</Text>
+        <Text className="text-xs font-rubik text-black-100">{address}</Text>
 
         <View className="flex flex-row items-center justify-between mt-2">
           <Text className="text-base font-rubik-bold text-primary-300">
-            $1,500
+            ${price}
           </Text>
           <Image
             source={icons.heart}
