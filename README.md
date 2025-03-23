@@ -1,6 +1,17 @@
-# React Native Real Estate App
+<br />
+<div align="center">
+  <a href="https://github.com/KelvinCYDev/fullstack-learning-management-app">
+    <img src="assets/images/icon.png" alt="Logo" width="80" height="80">
+  </a>
 
-A full-stack Real Estate app from scratch with Google Authentication, dynamic routing, and more.
+<h3 align="center">React Native Real Estate App</h3>
+
+  <p align="center">
+    A full-stack Real Estate app from scratch with Google Authentication, dynamic routing, and more.
+  </p>
+</div>
+
+[![Product Screenshot][product-screenshot]](#)
 
 ## Tech stack
 
@@ -12,6 +23,7 @@ A full-stack Real Estate app from scratch with Google Authentication, dynamic ro
 - Tailwind CSS
 
 ## Features and Pages
+
 - Oauth with Google
 - Centralized Data fetching from Appwrite via SDK
 - Home page: Display real estate properties with filtering options
@@ -38,7 +50,9 @@ A full-stack Real Estate app from scratch with Google Authentication, dynamic ro
    ```bash
    npx expo run:android
    ```
-   
 
 ## Credit
+
 [YouTube](https://www.youtube.com/watch?v=CzJQEstIiEI)
+
+[product-screenshot]: assets/images/demo.png
