@@ -1,6 +1,6 @@
 <br />
 <div align="center">
-  <a href="https://github.com/KelvinCYDev/fullstack-learning-management-app">
+  <a href="https://github.com/KelvinCYDev/react-native-real-estate-app">
     <img src="assets/images/icon.png" alt="Logo" width="80" height="80">
   </a>
 
